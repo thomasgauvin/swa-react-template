@@ -5,10 +5,12 @@ function App() {
 
   useEffect(() => {
     (async function () {
-      const { text } = await( await fetch(`/api/HelloWorld`)).json();
-      setData(text);
+      const response = await fetch(`/api/HelloWorld`);
+      const data = await response.text();
+      console.log(data);
+      setData(data);
     })();
-  });
+  }, []);
 
   return <div>{data}</div>;
 }
